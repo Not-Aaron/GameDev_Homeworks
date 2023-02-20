@@ -5,8 +5,9 @@ var score
 
 func _ready():
 	randomize()
+	$Player.connect("player_fired_bullet",bullet_manager,"handle_bullet_spawned")
 	
-
+onready var bullet_manager = $BulletManager
 
 
 
@@ -22,7 +23,7 @@ func new_game():
 	$Music.play()
 	score = 0
 	$HUD.update_score(score)
-	$HUD.show_message("Get Ready")
+	$HUD.show_message("Get Ready.\nShoot with Space.\nSurvive.")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 
